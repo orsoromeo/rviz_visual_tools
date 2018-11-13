@@ -303,9 +303,9 @@ public:
     double min_plane_size = 0.01;
     for (double i = 0; i <= 1.0; i += step)
     {
-      visual_tools_->publishXYPlane(pose1, rvt::RED, i * max_plane_size + min_plane_size);
-      visual_tools_->publishXZPlane(pose1, rvt::GREEN, i * max_plane_size + min_plane_size);
-      visual_tools_->publishYZPlane(pose1, rvt::BLUE, i * max_plane_size + min_plane_size);
+      visual_tools_->publishXYPlane(pose1, rvt::RED_, i * max_plane_size + min_plane_size);
+      visual_tools_->publishXZPlane(pose1, rvt::GREEN_, i * max_plane_size + min_plane_size);
+      visual_tools_->publishYZPlane(pose1, rvt::BLUE_, i * max_plane_size + min_plane_size);
       if (i == 0.0)
       {
         publishLabelHelper(pose1, "Planes");
@@ -393,7 +393,7 @@ public:
       else
       {
         pose1.translation().y() -= step / 2.0;
-        colors.push_back(rviz_visual_tools::BLUE);
+        colors.push_back(rviz_visual_tools::BLUE_);
       }
       path.emplace_back(pose1.translation());
       pose1.translation().x() += step;
@@ -419,8 +419,8 @@ public:
 
     // Reusable vector of 2 colors
     std::vector<colors> colors;
-    colors.push_back(RED);
-    colors.push_back(GREEN);
+    colors.push_back(RED_);
+    colors.push_back(GREEN_);
 
     // Reusable points vector
     EigenSTL::vector_Vector3d points1;
@@ -441,7 +441,7 @@ public:
     // TODO(dave): publishYZPlane() - no scale version available
 
     // Sphere
-    visual_tools_->publishSphere(pose1, BLUE, scale);
+    visual_tools_->publishSphere(pose1, BLUE_, scale);
     pose1.translation().y() += step;
 
     // Spheres
@@ -449,7 +449,7 @@ public:
     points1.emplace_back(pose1.translation());
     pose1.translation().x() += step;
     points1.emplace_back(pose1.translation());
-    visual_tools_->publishSpheres(points1, BLUE, scale);
+    visual_tools_->publishSpheres(points1, BLUE_, scale);
     pose1.translation().x() = x_location;  // reset
     pose1.translation().y() += step;
 
@@ -463,19 +463,19 @@ public:
     pose1.translation().y() += step;
 
     // YArrow
-    visual_tools_->publishYArrow(pose1, BLUE, scale);
+    visual_tools_->publishYArrow(pose1, BLUE_, scale);
     pose1.translation().y() += step;
 
     // ZArrow
-    visual_tools_->publishZArrow(pose1, GREEN, scale);
+    visual_tools_->publishZArrow(pose1, GREEN_, scale);
     pose1.translation().y() += step;
 
     // XArrow
-    visual_tools_->publishXArrow(pose1, RED, scale);
+    visual_tools_->publishXArrow(pose1, RED_, scale);
     pose1.translation().y() += step;
 
     // Arrow (x arrow)
-    visual_tools_->publishArrow(pose1, RED, scale);
+    visual_tools_->publishArrow(pose1, RED_, scale);
     pose1.translation().y() += step;
 
     // Line
@@ -521,7 +521,7 @@ public:
     // Cylinder
     pose2 = pose1;
     pose2.translation().x() += step / 2.0;
-    visual_tools_->publishCylinder(pose1.translation(), pose2.translation(), BLUE, scale);
+    visual_tools_->publishCylinder(pose1.translation(), pose2.translation(), BLUE_, scale);
     pose1.translation().y() += step;
 
     // TODO(dave): publishMesh
@@ -560,7 +560,7 @@ public:
     {
       if (scale == MEDIUM)
       {
-        visual_tools_->publishSphere(pose1, GREEN, scale);
+        visual_tools_->publishSphere(pose1, GREEN_, scale);
       }
       else
       {

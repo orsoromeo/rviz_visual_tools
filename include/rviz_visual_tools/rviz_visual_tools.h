@@ -80,19 +80,19 @@ enum colors
 {
   BLACK = 0,
   BROWN = 1,
-  BLUE = 2,
-  CYAN = 3,
+  BLUE_ = 2,
+  CYAN_ = 3,
   GREY = 4,
   DARK_GREY = 5,
-  GREEN = 6,
+  GREEN_ = 6,
   LIME_GREEN = 7,
-  MAGENTA = 8,
+  MAGENTA_ = 8,
   ORANGE = 9,
   PURPLE = 10,
-  RED = 11,
+  RED_ = 11,
   PINK = 12,
   WHITE = 13,
-  YELLOW = 14,
+  YELLOW_ = 14,
   TRANSLUCENT = 15,
   TRANSLUCENT_LIGHT = 16,
   TRANSLUCENT_DARK = 17,
@@ -440,15 +440,15 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * to incremental counter
    * \return true on success
    */
-  bool publishSphere(const Eigen::Affine3d& pose, colors color = BLUE, scales scale = MEDIUM,
+  bool publishSphere(const Eigen::Affine3d& pose, colors color = BLUE_, scales scale = MEDIUM,
                      const std::string& ns = "Sphere", std::size_t id = 0);
-  bool publishSphere(const Eigen::Vector3d& point, colors color = BLUE, scales scale = MEDIUM,
+  bool publishSphere(const Eigen::Vector3d& point, colors color = BLUE_, scales scale = MEDIUM,
                      const std::string& ns = "Sphere", std::size_t id = 0);
   bool publishSphere(const Eigen::Vector3d& point, colors color, double scale, const std::string& ns = "Sphere",
                      std::size_t id = 0);
-  bool publishSphere(const geometry_msgs::Point& point, colors color = BLUE, scales scale = MEDIUM,
+  bool publishSphere(const geometry_msgs::Point& point, colors color = BLUE_, scales scale = MEDIUM,
                      const std::string& ns = "Sphere", std::size_t id = 0);
-  bool publishSphere(const geometry_msgs::Pose& pose, colors color = BLUE, scales scale = MEDIUM,
+  bool publishSphere(const geometry_msgs::Pose& pose, colors color = BLUE_, scales scale = MEDIUM,
                      const std::string& ns = "Sphere", std::size_t id = 0);
   bool publishSphere(const geometry_msgs::Pose& pose, colors color, double scale, const std::string& ns = "Sphere",
                      std::size_t id = 0);
@@ -471,13 +471,13 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param ns - namespace of marker
    * \return true on success
    */
-  bool publishSpheres(const EigenSTL::vector_Vector3d& points, colors color = BLUE, scales scale = MEDIUM,
+  bool publishSpheres(const EigenSTL::vector_Vector3d& points, colors color = BLUE_, scales scale = MEDIUM,
                       const std::string& ns = "Spheres");
   bool publishSpheres(const EigenSTL::vector_Vector3d& points, colors color, double scale = 0.1,
                       const std::string& ns = "Spheres");
-  bool publishSpheres(const std::vector<geometry_msgs::Point>& points, colors color = BLUE, scales scale = MEDIUM,
+  bool publishSpheres(const std::vector<geometry_msgs::Point>& points, colors color = BLUE_, scales scale = MEDIUM,
                       const std::string& ns = "Spheres");
-  bool publishSpheres(const std::vector<geometry_msgs::Point>& points, colors color = BLUE, double scale = 0.1,
+  bool publishSpheres(const std::vector<geometry_msgs::Point>& points, colors color = BLUE_, double scale = 0.1,
                       const std::string& ns = "Spheres");
   bool publishSpheres(const std::vector<geometry_msgs::Point>& points, colors color,
                       const geometry_msgs::Vector3& scale, const std::string& ns = "Spheres");
@@ -503,9 +503,9 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param length - the length of the arrow tail, if zero, will auto set with scale
    * \return true on success
    */
-  bool publishXArrow(const Eigen::Affine3d& pose, colors color = RED, scales scale = MEDIUM, double length = 0.0);
-  bool publishXArrow(const geometry_msgs::Pose& pose, colors color = RED, scales scale = MEDIUM, double length = 0.0);
-  bool publishXArrow(const geometry_msgs::PoseStamped& pose, colors color = RED, scales scale = MEDIUM,
+  bool publishXArrow(const Eigen::Affine3d& pose, colors color = RED_, scales scale = MEDIUM, double length = 0.0);
+  bool publishXArrow(const geometry_msgs::Pose& pose, colors color = RED_, scales scale = MEDIUM, double length = 0.0);
+  bool publishXArrow(const geometry_msgs::PoseStamped& pose, colors color = RED_, scales scale = MEDIUM,
                      double length = 0.0);
 
   /**
@@ -516,9 +516,9 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param length - the length of the arrow tail, if zero, will auto set with scale
    * \return true on success
    */
-  bool publishYArrow(const Eigen::Affine3d& pose, colors color = GREEN, scales scale = MEDIUM, double length = 0.0);
-  bool publishYArrow(const geometry_msgs::Pose& pose, colors color = GREEN, scales scale = MEDIUM, double length = 0.0);
-  bool publishYArrow(const geometry_msgs::PoseStamped& pose, colors color = GREEN, scales scale = MEDIUM,
+  bool publishYArrow(const Eigen::Affine3d& pose, colors color = GREEN_, scales scale = MEDIUM, double length = 0.0);
+  bool publishYArrow(const geometry_msgs::Pose& pose, colors color = GREEN_, scales scale = MEDIUM, double length = 0.0);
+  bool publishYArrow(const geometry_msgs::PoseStamped& pose, colors color = GREEN_, scales scale = MEDIUM,
                      double length = 0.0);
 
   /**
@@ -529,12 +529,12 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param length - the length of the arrow tail, if zero, will auto set with scale
    * \return true on success
    */
-  bool publishZArrow(const Eigen::Affine3d& pose, colors color = BLUE, scales scale = MEDIUM, double length = 0.0,
+  bool publishZArrow(const Eigen::Affine3d& pose, colors color = BLUE_, scales scale = MEDIUM, double length = 0.0,
                      std::size_t id = 0);
-  bool publishZArrow(const geometry_msgs::Pose& pose, colors color = BLUE, scales scale = MEDIUM, double length = 0.0);
-  bool publishZArrow(const geometry_msgs::PoseStamped& pose, colors color = BLUE, scales scale = MEDIUM,
+  bool publishZArrow(const geometry_msgs::Pose& pose, colors color = BLUE_, scales scale = MEDIUM, double length = 0.0);
+  bool publishZArrow(const geometry_msgs::PoseStamped& pose, colors color = BLUE_, scales scale = MEDIUM,
                      double length = 0.0);
-  bool publishZArrow(const geometry_msgs::PoseStamped& pose, colors color = BLUE, scales scale = MEDIUM,
+  bool publishZArrow(const geometry_msgs::PoseStamped& pose, colors color = BLUE_, scales scale = MEDIUM,
                      double length = 0.0, std::size_t id = 0);
 
   /**
@@ -547,13 +547,13 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param end - the ending point of the arrow
    * \return true on success
    */
-  bool publishArrow(const Eigen::Affine3d& pose, colors color = BLUE, scales scale = MEDIUM, double length = 0.0,
+  bool publishArrow(const Eigen::Affine3d& pose, colors color = BLUE_, scales scale = MEDIUM, double length = 0.0,
                     std::size_t id = 0);
-  bool publishArrow(const geometry_msgs::Pose& pose, colors color = BLUE, scales scale = MEDIUM, double length = 0.0,
+  bool publishArrow(const geometry_msgs::Pose& pose, colors color = BLUE_, scales scale = MEDIUM, double length = 0.0,
                     std::size_t id = 0);
-  bool publishArrow(const geometry_msgs::PoseStamped& pose, colors color = BLUE, scales scale = MEDIUM,
+  bool publishArrow(const geometry_msgs::PoseStamped& pose, colors color = BLUE_, scales scale = MEDIUM,
                     double length = 0.0, std::size_t id = 0);
-  bool publishArrow(const geometry_msgs::Point& start, const geometry_msgs::Point& end, colors color = BLUE,
+  bool publishArrow(const geometry_msgs::Point& start, const geometry_msgs::Point& end, colors color = BLUE_,
                     scales scale = MEDIUM, std::size_t id = 0);
 
   /**
@@ -563,8 +563,8 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param color - an enum pre-defined name of a color
    * \return true on success
    */
-  bool publishCuboid(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color = BLUE);
-  bool publishCuboid(const geometry_msgs::Point& point1, const geometry_msgs::Point& point2, colors color = BLUE,
+  bool publishCuboid(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color = BLUE_);
+  bool publishCuboid(const geometry_msgs::Point& point1, const geometry_msgs::Point& point2, colors color = BLUE_,
                      const std::string& ns = "Cuboid", std::size_t id = 0);
 
   /**
@@ -576,8 +576,8 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param color - an enum pre-defined name of a color
    * \return true on success
    */
-  bool publishCuboid(const geometry_msgs::Pose& pose, double depth, double width, double height, colors color = BLUE);
-  bool publishCuboid(const Eigen::Affine3d& pose, double depth, double width, double height, colors color = BLUE);
+  bool publishCuboid(const geometry_msgs::Pose& pose, double depth, double width, double height, colors color = BLUE_);
+  bool publishCuboid(const Eigen::Affine3d& pose, double depth, double width, double height, colors color = BLUE_);
 
   /**
    * \brief Display a marker of line
@@ -587,16 +587,16 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param scale - an enum pre-defined name of a size
    * \return true on success
    */
-  bool publishLine(const Eigen::Affine3d& point1, const Eigen::Affine3d& point2, colors color = BLUE,
+  bool publishLine(const Eigen::Affine3d& point1, const Eigen::Affine3d& point2, colors color = BLUE_,
                    scales scale = MEDIUM);
-  bool publishLine(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color = BLUE,
+  bool publishLine(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color = BLUE_,
                    scales scale = MEDIUM);
   bool publishLine(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color, double radius);
   bool publishLine(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, const std_msgs::ColorRGBA& color,
                    scales scale = MEDIUM);
   bool publishLine(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, const std_msgs::ColorRGBA& color,
                    double radius);
-  bool publishLine(const geometry_msgs::Point& point1, const geometry_msgs::Point& point2, colors color = BLUE,
+  bool publishLine(const geometry_msgs::Point& point1, const geometry_msgs::Point& point2, colors color = BLUE_,
                    scales scale = MEDIUM);
   bool publishLine(const geometry_msgs::Point& point1, const geometry_msgs::Point& point2,
                    const std_msgs::ColorRGBA& color, scales scale = MEDIUM);
@@ -624,7 +624,7 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param ns - namespace of marker
    * \return true on success
    */
-  bool publishLineStrip(const std::vector<geometry_msgs::Point>& path, colors color = RED, scales scale = MEDIUM,
+  bool publishLineStrip(const std::vector<geometry_msgs::Point>& path, colors color = RED_, scales scale = MEDIUM,
                         const std::string& ns = "Path");
 
   /**
@@ -635,19 +635,19 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param ns - namespace of marker
    * \return true on success
    */
-  bool publishPath(const std::vector<geometry_msgs::Pose>& path, colors color = RED, scales scale = MEDIUM,
+  bool publishPath(const std::vector<geometry_msgs::Pose>& path, colors color = RED_, scales scale = MEDIUM,
                    const std::string& ns = "Path");
-  bool publishPath(const std::vector<geometry_msgs::Point>& path, colors color = RED, scales scale = MEDIUM,
+  bool publishPath(const std::vector<geometry_msgs::Point>& path, colors color = RED_, scales scale = MEDIUM,
                    const std::string& ns = "Path");
-  bool publishPath(const EigenSTL::vector_Affine3d& path, colors color = RED, scales scale = MEDIUM,
+  bool publishPath(const EigenSTL::vector_Affine3d& path, colors color = RED_, scales scale = MEDIUM,
                    const std::string& ns = "Path");
-  bool publishPath(const EigenSTL::vector_Vector3d& path, colors color = RED, scales scale = MEDIUM,
+  bool publishPath(const EigenSTL::vector_Vector3d& path, colors color = RED_, scales scale = MEDIUM,
                    const std::string& ns = "Path");
-  bool publishPath(const std::vector<geometry_msgs::Point>& path, colors color = RED, double radius = 0.01,
+  bool publishPath(const std::vector<geometry_msgs::Point>& path, colors color = RED_, double radius = 0.01,
                    const std::string& ns = "Path");
-  bool publishPath(const EigenSTL::vector_Vector3d& path, colors color = RED, double radius = 0.01,
+  bool publishPath(const EigenSTL::vector_Vector3d& path, colors color = RED_, double radius = 0.01,
                    const std::string& ns = "Path");
-  bool publishPath(const EigenSTL::vector_Affine3d& path, colors color = RED, double radius = 0.01,
+  bool publishPath(const EigenSTL::vector_Affine3d& path, colors color = RED_, double radius = 0.01,
                    const std::string& ns = "Path");
 
   /**
@@ -673,7 +673,7 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param ns - namespace of marker
    * \return true on success
    */
-  bool publishPolygon(const geometry_msgs::Polygon& polygon, colors color = RED, scales scale = MEDIUM,
+  bool publishPolygon(const geometry_msgs::Polygon& polygon, colors color = RED_, scales scale = MEDIUM,
                       const std::string& ns = "Polygon");
 
   /**
@@ -689,7 +689,7 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \return true on success
    */
   bool publishWireframeCuboid(const Eigen::Affine3d& pose, double depth, double width, double height,
-                              colors color = BLUE, const std::string& ns = "Wireframe Cuboid", std::size_t id = 0);
+                              colors color = BLUE_, const std::string& ns = "Wireframe Cuboid", std::size_t id = 0);
 
   /**
    * \brief Publish transformed wireframe cuboid. Useful eg to show an oriented bounding box.
@@ -702,7 +702,7 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \return true on success
    */
   bool publishWireframeCuboid(const Eigen::Affine3d& pose, const Eigen::Vector3d& min_point,
-                              const Eigen::Vector3d& max_point, colors color = BLUE,
+                              const Eigen::Vector3d& max_point, colors color = BLUE_,
                               const std::string& ns = "Wireframe Cuboid", std::size_t id = 0);
 
   /**
@@ -714,7 +714,7 @@ a   *        Warning: when using this in a loop be sure to call trigger() at end
    * \param id - unique counter that allows you to overwrite a previous marker. if 0, defaults to incremental counter
    * \return true on success
    */
-  bool publishWireframeRectangle(const Eigen::Affine3d& pose, double height, double width, colors color = BLUE,
+  bool publishWireframeRectangle(const Eigen::Affine3d& pose, double height, double width, colors color = BLUE_,
                                  scales scale = MEDIUM, std::size_t id = 0);
   bool publishWireframeRectangle(const Eigen::Affine3d& pose, const Eigen::Vector3d& p1_in,
                                  const Eigen::Vector3d& p2_in, const Eigen::Vector3d& p3_in,
@@ -781,7 +781,7 @@ public:
    * \param radius - geometry of cylinder
    * \return true on success
    */
-  bool publishCylinder(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color = BLUE,
+  bool publishCylinder(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color = BLUE_,
                        scales scale = MEDIUM, const std::string& ns = "Cylinder");
   bool publishCylinder(const Eigen::Vector3d& point1, const Eigen::Vector3d& point2, colors color, double radius = 0.01,
                        const std::string& ns = "Cylinder");
@@ -796,9 +796,9 @@ public:
    * \param radius - geometry of cylinder
    * \return true on success
    */
-  bool publishCylinder(const Eigen::Affine3d& pose, colors color = BLUE, double height = 0.1, double radius = 0.01,
+  bool publishCylinder(const Eigen::Affine3d& pose, colors color = BLUE_, double height = 0.1, double radius = 0.01,
                        const std::string& ns = "Cylinder");
-  bool publishCylinder(const geometry_msgs::Pose& pose, colors color = BLUE, double height = 0.1, double radius = 0.01,
+  bool publishCylinder(const geometry_msgs::Pose& pose, colors color = BLUE_, double height = 0.1, double radius = 0.01,
                        const std::string& ns = "Cylinder");
   bool publishCylinder(const geometry_msgs::Pose& pose, const std_msgs::ColorRGBA& color, double height = 0.1,
                        double radius = 0.01, const std::string& ns = "Cylinder");

@@ -53,9 +53,9 @@ namespace rviz_visual_tools
 {
 const std::string RvizVisualTools::name_ = "visual_tools";
 
-const std::array<colors, 14> RvizVisualTools::all_rand_colors_ = { RED,        GREEN,  BLUE,   GREY,   DARK_GREY,
-                                                                   WHITE,      ORANGE, YELLOW, BROWN,  PINK,
-                                                                   LIME_GREEN, PURPLE, CYAN,   MAGENTA };
+const std::array<colors, 14> RvizVisualTools::all_rand_colors_ = { RED_,        GREEN_,  BLUE_,   GREY,   DARK_GREY,
+                                                                   WHITE,      ORANGE, YELLOW_, BROWN,  PINK,
+                                                                   LIME_GREEN, PURPLE, CYAN_,   MAGENTA_ };
 
 RvizVisualTools::RvizVisualTools(std::string base_frame, std::string marker_topic, ros::NodeHandle nh)
   : nh_(nh), marker_topic_(std::move(marker_topic)), base_frame_(std::move(base_frame))
@@ -370,13 +370,13 @@ std_msgs::ColorRGBA RvizVisualTools::getColor(colors color) const
 
   switch (color)
   {
-    case RED:
+    case RED_:
       result.r = 0.8;
       result.g = 0.1;
       result.b = 0.1;
       result.a = alpha_;
       break;
-    case GREEN:
+    case GREEN_:
       result.r = 0.1;
       result.g = 0.8;
       result.b = 0.1;
@@ -430,7 +430,7 @@ std_msgs::ColorRGBA RvizVisualTools::getColor(colors color) const
       result.b = 0.0;
       result.a = alpha_;
       break;
-    case YELLOW:
+    case YELLOW_:
       result.r = 1.0;
       result.g = 1.0;
       result.b = 0.0;
@@ -466,13 +466,13 @@ std_msgs::ColorRGBA RvizVisualTools::getColor(colors color) const
       result.b = 0.597;
       result.a = alpha_;
       break;
-    case CYAN:
+    case CYAN_:
       result.r = 0.0;
       result.g = 1.0;
       result.b = 1.0;
       result.a = alpha_;
       break;
-    case MAGENTA:
+    case MAGENTA_:
       result.r = 1.0;
       result.g = 0.0;
       result.b = 1.0;
@@ -485,7 +485,7 @@ std_msgs::ColorRGBA RvizVisualTools::getColor(colors color) const
       ROS_WARN_STREAM_NAMED(name_, "The 'DEFAULT' color should probably not "
                                    "be used with getColor(). Defaulting to "
                                    "blue.");
-    case BLUE:
+    case BLUE_:
     default:
       result.r = 0.1;
       result.g = 0.1;
@@ -504,19 +504,19 @@ colors RvizVisualTools::intToRvizColor(std::size_t color)
   {
     case 0: return BLACK; break;
     case 1: return BROWN; break;
-    case 2: return BLUE; break;
-    case 3: return CYAN; break;
+    case 2: return BLUE_; break;
+    case 3: return CYAN_; break;
     case 4: return GREY; break;
     case 5: return DARK_GREY; break;
-    case 6: return GREEN; break;
+    case 6: return GREEN_; break;
     case 7: return LIME_GREEN; break;
-    case 8: return MAGENTA; break;
+    case 8: return MAGENTA_; break;
     case 9: return ORANGE; break;
     case 10: return PURPLE; break;
-    case 11: return RED; break;
+    case 11: return RED_; break;
     case 12: return PINK; break;
     case 13: return WHITE; break;
-    case 14: return YELLOW; break;
+    case 14: return YELLOW_; break;
     case 15: return TRANSLUCENT; break;
     case 16: return TRANSLUCENT_LIGHT; break;
     case 17: return TRANSLUCENT_DARK; break;
@@ -623,24 +623,24 @@ std_msgs::ColorRGBA RvizVisualTools::getColorScale(double value) const
   std_msgs::ColorRGBA start;
   std_msgs::ColorRGBA end;
 
-  // For second half of color range move towards RED
+  // For second half of color range move towards RED_
   if (value == 0.0)
   {
-    return getColor(RED);
+    return getColor(RED_);
   }
   else if (value == 1.0)
   {
-    return getColor(GREEN);
+    return getColor(GREEN_);
   }
   else if (value <= 0.5)
   {
-    start = getColor(RED);
-    end = getColor(YELLOW);
+    start = getColor(RED_);
+    end = getColor(YELLOW_);
   }
   else
   {
-    start = getColor(YELLOW);
-    end = getColor(GREEN);
+    start = getColor(YELLOW_);
+    end = getColor(GREEN_);
     value = fmod(value, 0.5);
   }
 
@@ -880,38 +880,38 @@ bool RvizVisualTools::publishMarkers(visualization_msgs::MarkerArray& markers)
     loadMarkerPub();
   }
 
-  // Check if connected to a subscriber
-  if (!pub_rviz_markers_waited_ && !pub_rviz_markers_connected_)
-  {
-    ROS_DEBUG_STREAM_NAMED(name_, "Waiting for subscribers before publishing markers...");
-    waitForSubscriber(pub_rviz_markers_);
-
-    // Only wait for the publisher once, after that just ignore the lack of connection
-    pub_rviz_markers_waited_ = true;
-  }
-
-  // Check if any actual markers exist to publish
-  if (markers.markers.empty())
-  {
-    return false;
-  }
-
-  // Change all markers to be inverted in color
-  if (psychedelic_mode_)
-  {
-    for (auto& marker : markers.markers)
-    {
-      marker.color.r = 1.0 - marker.color.r;
-      marker.color.g = 1.0 - marker.color.g;
-      marker.color.b = 1.0 - marker.color.b;
-      for (auto& color : marker.colors)
-      {
-        color.r = 1.0 - color.r;
-        color.g = 1.0 - color.g;
-        color.b = 1.0 - color.b;
-      }
-    }
-  }
+//  // Check if connected to a subscriber
+//  if (!pub_rviz_markers_waited_ && !pub_rviz_markers_connected_)
+//  {
+//    ROS_DEBUG_STREAM_NAMED(name_, "Waiting for subscribers before publishing markers...");
+//    waitForSubscriber(pub_rviz_markers_);
+//
+//    // Only wait for the publisher once, after that just ignore the lack of connection
+//    pub_rviz_markers_waited_ = true;
+//  }
+//
+//  // Check if any actual markers exist to publish
+//  if (markers.markers.empty())
+//  {
+//    return false;
+//  }
+//
+//  // Change all markers to be inverted in color
+//  if (psychedelic_mode_)
+//  {
+//    for (auto& marker : markers.markers)
+//    {
+//      marker.color.r = 1.0 - marker.color.r;
+//      marker.color.g = 1.0 - marker.color.g;
+//      marker.color.b = 1.0 - marker.color.b;
+//      for (auto& color : marker.colors)
+//      {
+//        color.r = 1.0 - color.r;
+//        color.g = 1.0 - color.g;
+//        color.b = 1.0 - color.b;
+//      }
+//    }
+//  }
 
   // Publish
   pub_rviz_markers_.publish(markers);
@@ -1447,18 +1447,18 @@ bool RvizVisualTools::publishAxisInternal(const Eigen::Affine3d& pose, double le
   Eigen::Affine3d x_pose =
       Eigen::Translation3d(length / 2.0, 0, 0) * Eigen::AngleAxisd(M_PI / 2.0, Eigen::Vector3d::UnitY());
   x_pose = pose * x_pose;
-  publishCylinder(x_pose, RED, length, radius, ns);
+  publishCylinder(x_pose, RED_, length, radius, ns);
 
   // Publish y axis
   Eigen::Affine3d y_pose =
       Eigen::Translation3d(0, length / 2.0, 0) * Eigen::AngleAxisd(M_PI / 2.0, Eigen::Vector3d::UnitX());
   y_pose = pose * y_pose;
-  publishCylinder(y_pose, GREEN, length, radius, ns);
+  publishCylinder(y_pose, GREEN_, length, radius, ns);
 
   // Publish z axis
   Eigen::Affine3d z_pose = Eigen::Translation3d(0, 0, length / 2.0) * Eigen::AngleAxisd(0, Eigen::Vector3d::UnitZ());
   z_pose = pose * z_pose;
-  publishCylinder(z_pose, BLUE, length, radius, ns);
+  publishCylinder(z_pose, BLUE_, length, radius, ns);
 
   return true;
 }
@@ -1836,7 +1836,7 @@ bool RvizVisualTools::publishLines(const std::vector<geometry_msgs::Point>& aPoi
   line_list_marker_.id++;
 
   line_list_marker_.scale = scale;
-  // line_list_marker_.color = getColor(BLUE); // This var is not used
+  // line_list_marker_.color = getColor(BLUE_); // This var is not used
 
   // Add each point pair to the line message
   line_list_marker_.points.clear();
